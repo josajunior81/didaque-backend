@@ -3,7 +3,8 @@
   "scripts": {
     "lint": "tslint --project tsconfig.json",
     "build": "tsc",
-    "serve": "npm run build && nodemon --exec firebase serve --only functions",
+    "serve": "npm run build && firebase serve --only functions",
+    "nodemon": "npm run build && nodemon --exec firebase serve --only functions",
     "shell": "npm run build && firebase functions:shell",
     "start": "npm run shell",
     "deploy": "firebase deploy --only functions",
@@ -22,11 +23,12 @@
     "request": "^2.88.0"
   },
   "devDependencies": {
-    "tslint": "^5.12.0",
-    "typescript": "^3.2.2",
-    "@types/request": "^2.48.3",
+    "@types/cors": "^2.8.6",
     "@types/express": "^4.17.1",
-    "@types/cors": "^2.8.6"
+    "@types/request": "^2.48.3",
+    "nodemon": "^1.19.2",
+    "tslint": "^5.12.0",
+    "typescript": "^3.2.2"
   },
   "private": true
 }
