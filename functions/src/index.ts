@@ -35,12 +35,12 @@ app.get('/languages', async (req, res) => {
     });
 });
 
-app.get('/books/:lang/:dam', async (req, res) => {
+app.get('/books/:dam', async (req, res) => {
     const key = await functions.config().dbp.key;
-    request.get(`https://dbt.io/library/volume?key=${key}&language_code=${req.params.lang}&v=2`, { json: true }, (err, _, body) => {
+    request.get(`https://dbt.io/text/verse?key=${key}&dam_id=${req.params.dam}&v=2`, { json: true }, (err, _, body) => {
         if (err) {
             console.log("Error: " + err.message);
         }
-        res.send(body);
+        res.send({volume: req.params.dam, books: body});
     });
 });
